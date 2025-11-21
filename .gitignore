@@ -1,0 +1,15 @@
+# 백업 파일
+backups/
+*.tar.gz
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# 임시 파일
+*.swp
+*.swo
+*~
+.*.sw?
+
