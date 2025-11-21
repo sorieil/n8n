@@ -6,6 +6,9 @@
 VOLUME_NAME="n8n_data"
 BACKUP_DIR="./backups"
 
+# n8n 라이센스
+N8N_LICENSE="4f5ca5fe-f3ce-466f-9636-fd4bf22fe0b3"
+
 # 백업 디렉토리 생성
 mkdir -p "$BACKUP_DIR"
 
@@ -46,5 +49,6 @@ docker run -it --rm \
   --name n8n \
   -p 5678:5678 \
   -v "$VOLUME_NAME":/home/node/.n8n \
+  -e N8N_LICENSE="$N8N_LICENSE" \
   docker.n8n.io/n8nio/n8n
 
