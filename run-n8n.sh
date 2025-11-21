@@ -6,8 +6,9 @@
 VOLUME_NAME="n8n_data"
 BACKUP_DIR="./backups"
 
-# n8n 라이센스
-N8N_LICENSE="4f5ca5fe-f3ce-466f-9636-fd4bf22fe0b3"
+# n8n 라이센스 (이미 볼륨에 저장된 경우 환경 변수 전달 불필요)
+# 새로 설치하거나 라이센스를 다시 설정할 때만 사용
+# N8N_LICENSE="4f5ca5fe-f3ce-466f-9636-fd4bf22fe0b3"
 
 # 백업 디렉토리 생성
 mkdir -p "$BACKUP_DIR"
@@ -44,11 +45,13 @@ echo "접속 URL: http://localhost:5678"
 echo ""
 
 # n8n 실행
+# 라이센스가 이미 볼륨에 저장되어 있으면 환경 변수 전달 불필요
+# 새로 설치할 때만 위의 N8N_LICENSE 주석을 해제하고 아래 -e 옵션을 활성화하세요
 docker run -it --rm \
   -d \
   --name n8n \
   -p 5678:5678 \
   -v "$VOLUME_NAME":/home/node/.n8n \
-  -e N8N_LICENSE="$N8N_LICENSE" \
   docker.n8n.io/n8nio/n8n
+  # -e N8N_LICENSE="$N8N_LICENSE" \
 
